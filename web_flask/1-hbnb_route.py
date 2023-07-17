@@ -1,22 +1,27 @@
 #!/usr/bin/python3
 """
 Write a script that starts a Flask web application.
-The application must be listening on 0.0.0.0, port 5000
+The app must be listening on 0.0.0.0, port 5000.
 
 Routes:
-- /: display "Hello HBNB!"
+    - /: display "Hello HBNB!"
+    - /hbnb: display "HBNB"
 
-Note: You must use the option 'strict_slashes=Flase in the route definition
+Note: You must use the option strict_slashes=False in the route definition
 """
 
-
 from flask import Flask
+
 
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
     return "Hello HBNB!"
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    return "HBNB"
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
