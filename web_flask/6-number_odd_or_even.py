@@ -19,6 +19,7 @@ Note: You must use the option strict_slashes=False in route definition
 
 
 from flask import Flask
+from flask import render_template
 
 
 app = Flask(__name__)
@@ -61,11 +62,13 @@ def num_template(n):
     """ Displays number template if n is a number """
     return render_template('5-number.html', n=n)
 
+
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def odd_or_even(n):
     """ Displays a number and whether its even or odd """
-    odd_or_even = 'odd' if n %2 else 'even'
-    return render_templates('6-odd_or_even.html', n=n, odd_or_even=odd_or_even)
+    odd_or_even = 'odd' if n % 2 else 'even'
+    return render_template('6-odd_or_even.html', n=n, odd_or_even=odd_or_even)
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
